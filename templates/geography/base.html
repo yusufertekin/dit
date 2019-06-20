@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static geo_tags %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<div class="section" style="margin: 20px;">
+  <div class="section-header">
+    <h2>{{ title }}</h2>
+  </div>
+  <hr class="divider"/>
+  <div class="section-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          {% for verbose_name, _ in field_map %}
+          <th scope="col">{{ verbose_name }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for object in object_list %}
+        <tr>
+          {% for _, name in field_map %}
+          <td>{{ object|getattribute:name|default_if_none:"" }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    <table>
+    {% if is_paginated %}
+    <div class="pagination">
+      <span class="page-links">
+        {% if page_obj.has_previous %}
+        <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+        <span class="page-current">
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+        {% if page_obj.has_next %}
+        <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+        {% endif %}
+      </span>
+    </div>
+    {% endif %}
+    {% if not object_list %}
+    <span>No results found</span>
+    {% endif %}
+  </div>
+{% endblock %}

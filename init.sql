@@ -1,0 +1,5 @@
+CREATE USER root;
+CREATE DATABASE airflow;
+GRANT ALL ON DATABASE airflow TO root;
+CREATE DATABASE django;
+GRANT ALL ON DATABASE django TO root;

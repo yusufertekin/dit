@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    volumes:
+    - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  web:
+    build:
+      context: .
+      dockerfile: web.dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  airflow:
+    build:
+      context: .
+      dockerfile: airflow.dockerfile
+    ports:
+      - "8080:8080"
