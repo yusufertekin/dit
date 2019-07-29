@@ -1,0 +1,4 @@
+applications:
+- name: ct-web
+  services:
+  - ct-pg

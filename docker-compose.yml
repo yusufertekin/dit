@@ -9,6 +9,7 @@ services:
     build:
       context: .
       dockerfile: web.dockerfile
+    image: yusufertekindit/ct-web
     ports:
       - "8000:8000"
     depends_on:
@@ -18,5 +19,6 @@ services:
     build:
       context: .
       dockerfile: airflow.dockerfile
+    image: yusufertekindit/ct-airflow
     ports:
       - "8080:8080"
