@@ -20,6 +20,7 @@ ENV AIRFLOW_CONN_POSTGRES_DJANGO postgresql://root@db/django
 
 RUN pip3 install -r requirements.txt
 RUN pip3 install apache-airflow[postgres]
+RUN pip3 install werkzeug==0.15.4
 
 ENV DJANGO_SETTINGS_MODULE=dit.settings.docker
 
