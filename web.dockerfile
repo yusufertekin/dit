@@ -11,6 +11,6 @@ RUN apt-get install libpq-dev python-dev -y
 
 RUN pip3 install -r requirements.txt
 
-ENV DJANGO_SETTINGS_MODULE=dit.settings.docker
+ENV DJANGO_SETTINGS_MODULE=dit.settings.dev
 
 ENTRYPOINT [ "/code/web_entrypoint.sh" ]

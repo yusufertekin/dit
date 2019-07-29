@@ -6,7 +6,7 @@ import time
 
 service_name = 'Postgres'
 port = 5432
-ip = 'db'
+ip = 'ct-pg'
 
 while True:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
