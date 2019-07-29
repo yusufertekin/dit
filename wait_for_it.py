@@ -3,12 +3,15 @@ exits when it is open.
 """
 import socket
 import time
+import dj_database_url
 
 service_name = 'Postgres'
 port = 5432
 ip = 'ct-pg'
 
 while True:
+    print('--------------------- dj url ===================')
+    print(dj_database_url.config())
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     result = sock.connect_ex((ip, port))
     if result == 0:
